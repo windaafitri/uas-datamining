@@ -1,0 +1,3641 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Studi Kasus Klasifikasi Huruf Alfabet A-Z Berdasarkan Fitur Geometris yang Diekstrak dari Citra Huruf Menggunakan Dataset Letter Recognition &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'project-pendat';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Notebooks with MyST Markdown" href="markdown-notebooks.html" />
+    <link rel="prev" title="Content with notebooks" href="notebooks.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Studi Kasus Klasifikasi Huruf Alfabet A-Z Berdasarkan Fitur Geometris yang Diekstrak dari Citra Huruf Menggunakan Dataset Letter Recognition</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fproject-pendat.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/project-pendat.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Studi Kasus Klasifikasi Huruf Alfabet A-Z Berdasarkan Fitur Geometris yang Diekstrak dari Citra Huruf Menggunakan Dataset Letter Recognition</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Studi Kasus Klasifikasi Huruf Alfabet A-Z Berdasarkan Fitur Geometris yang Diekstrak dari Citra Huruf Menggunakan Dataset Letter Recognition</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-analisis">Tujuan Analisis</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">Data Understanding</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-data">Deskripsi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-data">Menampilkan data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitur">Fitur</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-class">Penjelasan Class</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-kualitas-data">Identifikasi kualitas data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-outlier">Identifikasi Outlier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cek-missing-values">Cek Missing Values</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-processing-data">PRE PROCESSING DATA</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-outlier-dengan-menghapus-outlier">Penanganan Outlier Dengan Menghapus Outlier</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling">MODELLING</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbour">K-Nearest Neighbour</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes-classification">GAUSSIAN NAIVE BAYES CLASSIFICATION</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-data-dari-file-csv">Membaca data dari file csv</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membagi-data">Membagi Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes-library">GAUSSIAN Naive Bayes Library</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stacking-classifier">Stacking Classifier</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-k-nn-dengan-n-neighbours-3">Model K-NN dengan n-neighbours = 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-k-nn-dengan-n-neighbours-5">Model K-NN dengan n-neighbours = 5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memprediksi-menggunakan-data-baru">Memprediksi menggunakan data baru</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier">Bagging Classifier</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="studi-kasus-klasifikasi-huruf-alfabet-a-z-berdasarkan-fitur-geometris-yang-diekstrak-dari-citra-huruf-menggunakan-dataset-letter-recognition">
+<h1>Studi Kasus Klasifikasi Huruf Alfabet A-Z Berdasarkan Fitur Geometris yang Diekstrak dari Citra Huruf Menggunakan Dataset Letter Recognition<a class="headerlink" href="#studi-kasus-klasifikasi-huruf-alfabet-a-z-berdasarkan-fitur-geometris-yang-diekstrak-dari-citra-huruf-menggunakan-dataset-letter-recognition" title="Link to this heading">#</a></h1>
+<section id="tujuan-analisis">
+<h2>Tujuan Analisis<a class="headerlink" href="#tujuan-analisis" title="Link to this heading">#</a></h2>
+<p>Pekerjaan ini menggunakan analisis statistik untuk mengidentifikasi fitur-fitur utama dalam pengenalan huruf pada dataset “Letter Recognition”. Hal ini bertujuan untuk meningkatkan akurasi model klasifikasi huruf dan memberikan panduan bagi aplikasi OCR. Dataset ini mencakup sampel huruf A-Z yang diekstrak dari gambar, dengan 16 fitur geometris seperti koordinat bounding box, lebar, tinggi, jumlah piksel aktif, dan statistik posisi piksel. Tujuannya adalah memodelkan klasifikasi huruf berdasarkan fitur-fitur.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-understanding">
+<h1>Data Understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h1>
+<section id="deskripsi-data">
+<h2>Deskripsi Data<a class="headerlink" href="#deskripsi-data" title="Link to this heading">#</a></h2>
+<p>Penggunaan dataset “Letter Recognition” bertujuan untuk mengembangkan algoritma pengenalan huruf yang andal dengan menggunakan fitur geometris yang diekstrak dari gambar huruf. Huruf-huruf dalam dataset ini diambil dari citra dan dikarakterisasi berdasarkan berbagai atribut seperti koordinat bounding box, lebar, tinggi, jumlah piksel aktif, dan statistik posisi piksel.</p>
+<p>Pengolahan huruf-huruf ini melibatkan ekstraksi fitur dari gambar huruf menggunakan teknik-teknik tertentu. Setiap huruf dalam gambar diisolasi menggunakan bounding box, dan berbagai fitur geometris dihitung. Fitur-fitur ini mencakup rata-rata posisi piksel, jumlah piksel aktif, dan perubahan arah (edges).</p>
+<p>Algoritma pengenalan huruf yang berbeda dan teknik ekstraksi fitur digunakan, tergantung pada jenis pengenalan huruf yang ingin dicapai. Dalam mengembangkan model pengenalan huruf, komposisi data yang digunakan harus mencakup berbagai karakteristik huruf yang relevan untuk memastikan model dapat mengklasifikasikan huruf dengan akurasi tinggi. Hal ini mencakup variasi dalam bentuk huruf, ukuran, dan orientasi. Oleh karena itu, kualitas fitur yang diekstraksi dari gambar huruf sangat penting dalam menentukan keberhasilan model pengenalan huruf.</p>
+<section id="menampilkan-data">
+<h3>Menampilkan data<a class="headerlink" href="#menampilkan-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ucimlrepo</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting ucimlrepo
+  Downloading ucimlrepo-0.0.7-py3-none-any.whl.metadata (5.5 kB)
+Requirement already satisfied: pandas&gt;=1.0.0 in c:\laragon\bin\python\python-3.10\lib\site-packages (from ucimlrepo) (2.2.2)
+Requirement already satisfied: certifi&gt;=2020.12.5 in c:\laragon\bin\python\python-3.10\lib\site-packages (from ucimlrepo) (2024.6.2)
+Requirement already satisfied: numpy&gt;=1.22.4 in c:\laragon\bin\python\python-3.10\lib\site-packages (from pandas&gt;=1.0.0-&gt;ucimlrepo) (1.26.4)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in c:\laragon\bin\python\python-3.10\lib\site-packages (from pandas&gt;=1.0.0-&gt;ucimlrepo) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in c:\laragon\bin\python\python-3.10\lib\site-packages (from pandas&gt;=1.0.0-&gt;ucimlrepo) (2024.1)
+Requirement already satisfied: tzdata&gt;=2022.7 in c:\laragon\bin\python\python-3.10\lib\site-packages (from pandas&gt;=1.0.0-&gt;ucimlrepo) (2024.1)
+Requirement already satisfied: six&gt;=1.5 in c:\laragon\bin\python\python-3.10\lib\site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&gt;=1.0.0-&gt;ucimlrepo) (1.16.0)
+Downloading ucimlrepo-0.0.7-py3-none-any.whl (8.0 kB)
+Installing collected packages: ucimlrepo
+Successfully installed ucimlrepo-0.0.7
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ucimlrepo</span> <span class="kn">import</span> <span class="n">fetch_ucirepo</span> 
+  
+<span class="c1"># fetch dataset </span>
+<span class="n">letter_recognition</span> <span class="o">=</span> <span class="n">fetch_ucirepo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">59</span><span class="p">)</span> 
+  
+<span class="c1"># data (as pandas dataframes) </span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">letter_recognition</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">features</span> 
+<span class="n">y</span> <span class="o">=</span> <span class="n">letter_recognition</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">targets</span> 
+  
+<span class="c1"># metadata </span>
+<span class="nb">print</span><span class="p">(</span><span class="n">letter_recognition</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span> 
+  
+<span class="c1"># variable information </span>
+<span class="nb">print</span><span class="p">(</span><span class="n">letter_recognition</span><span class="o">.</span><span class="n">variables</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;uci_id&#39;: 59, &#39;name&#39;: &#39;Letter Recognition&#39;, &#39;repository_url&#39;: &#39;https://archive.ics.uci.edu/dataset/59/letter+recognition&#39;, &#39;data_url&#39;: &#39;https://archive.ics.uci.edu/static/public/59/data.csv&#39;, &#39;abstract&#39;: &#39;Database of character image features; try to identify the letter&#39;, &#39;area&#39;: &#39;Computer Science&#39;, &#39;tasks&#39;: [&#39;Classification&#39;], &#39;characteristics&#39;: [&#39;Multivariate&#39;], &#39;num_instances&#39;: 20000, &#39;num_features&#39;: 16, &#39;feature_types&#39;: [&#39;Integer&#39;], &#39;demographics&#39;: [], &#39;target_col&#39;: [&#39;lettr&#39;], &#39;index_col&#39;: None, &#39;has_missing_values&#39;: &#39;no&#39;, &#39;missing_values_symbol&#39;: None, &#39;year_of_dataset_creation&#39;: 1991, &#39;last_updated&#39;: &#39;Thu Sep 28 2023&#39;, &#39;dataset_doi&#39;: &#39;10.24432/C5ZP40&#39;, &#39;creators&#39;: [&#39;David Slate&#39;], &#39;intro_paper&#39;: None, &#39;additional_info&#39;: {&#39;summary&#39;: &#39;The objective is to identify each of a large number of black-and-white rectangular pixel displays as one of the 26 capital letters in the English alphabet.  The character images were based on 20 different fonts and each letter within these 20 fonts was randomly distorted to produce a file of 20,000 unique stimuli.  Each stimulus was converted into 16 primitive numerical attributes (statistical moments and edge counts) which were then scaled to fit into a range of integer values from 0 through 15.  We typically train on the first 16000 items and then use the resulting model to predict the letter category for the remaining 4000.  See the article cited above for more details.&#39;, &#39;purpose&#39;: None, &#39;funded_by&#39;: None, &#39;instances_represent&#39;: None, &#39;recommended_data_splits&#39;: None, &#39;sensitive_data&#39;: None, &#39;preprocessing_description&#39;: None, &#39;variable_info&#39;: &#39;\t 1.\tlettr\tcapital letter\t(26 values from A to Z)\r\n\t 2.\tx-box\thorizontal position of box\t(integer)\r\n\t 3.\ty-box\tvertical position of box\t(integer)\r\n\t 4.\twidth\twidth of box\t\t\t(integer)\r\n\t 5.\thigh \theight of box\t\t\t(integer)\r\n\t 6.\tonpix\ttotal # on pixels\t\t(integer)\r\n\t 7.\tx-bar\tmean x of on pixels in box\t(integer)\r\n\t 8.\ty-bar\tmean y of on pixels in box\t(integer)\r\n\t 9.\tx2bar\tmean x variance\t\t\t(integer)\r\n\t10.\ty2bar\tmean y variance\t\t\t(integer)\r\n\t11.\txybar\tmean x y correlation\t\t(integer)\r\n\t12.\tx2ybr\tmean of x * x * y\t\t(integer)\r\n\t13.\txy2br\tmean of x * y * y\t\t(integer)\r\n\t14.\tx-ege\tmean edge count left to right\t(integer)\r\n\t15.\txegvy\tcorrelation of x-ege with y\t(integer)\r\n\t16.\ty-ege\tmean edge count bottom to top\t(integer)\r\n\t17.\tyegvx\tcorrelation of y-ege with x\t(integer)&#39;, &#39;citation&#39;: None}}
+     name     role         type demographic                    description  \
+0   lettr   Target  Categorical        None                 capital letter   
+1   x-box  Feature      Integer        None     horizontal position of box   
+2   y-box  Feature      Integer        None       vertical position of box   
+3   width  Feature      Integer        None                   width of box   
+4    high  Feature      Integer        None                  height of box   
+5   onpix  Feature      Integer        None              total # on pixels   
+6   x-bar  Feature      Integer        None     mean x of on pixels in box   
+7   y-bar  Feature      Integer        None     mean y of on pixels in box   
+8   x2bar  Feature      Integer        None                mean x variance   
+9   y2bar  Feature      Integer        None                mean y variance   
+10  xybar  Feature      Integer        None           mean x y correlation   
+11  x2ybr  Feature      Integer        None              mean of x * x * y   
+12  xy2br  Feature      Integer        None              mean of x * y * y   
+13  x-ege  Feature      Integer        None  mean edge count left to right   
+14  xegvy  Feature      Integer        None    correlation of x-ege with y   
+15  y-ege  Feature      Integer        None  mean edge count bottom to top   
+16  yegvx  Feature      Integer        None    correlation of y-ege with x   
+
+   units missing_values  
+0   None             no  
+1   None             no  
+2   None             no  
+3   None             no  
+4   None             no  
+5   None             no  
+6   None             no  
+7   None             no  
+8   None             no  
+9   None             no  
+10  None             no  
+11  None             no  
+12  None             no  
+13  None             no  
+14  None             no  
+15  None             no  
+16  None             no  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://archive.ics.uci.edu/static/public/59/data.csv&#39;</span><span class="p">)</span>
+<span class="n">df_data</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lettr</th>
+      <th>x-box</th>
+      <th>y-box</th>
+      <th>width</th>
+      <th>high</th>
+      <th>onpix</th>
+      <th>x-bar</th>
+      <th>y-bar</th>
+      <th>x2bar</th>
+      <th>y2bar</th>
+      <th>xybar</th>
+      <th>x2ybr</th>
+      <th>xy2br</th>
+      <th>x-ege</th>
+      <th>xegvy</th>
+      <th>y-ege</th>
+      <th>yegvx</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>T</td>
+      <td>2</td>
+      <td>8</td>
+      <td>3</td>
+      <td>5</td>
+      <td>1</td>
+      <td>8</td>
+      <td>13</td>
+      <td>0</td>
+      <td>6</td>
+      <td>6</td>
+      <td>10</td>
+      <td>8</td>
+      <td>0</td>
+      <td>8</td>
+      <td>0</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>I</td>
+      <td>5</td>
+      <td>12</td>
+      <td>3</td>
+      <td>7</td>
+      <td>2</td>
+      <td>10</td>
+      <td>5</td>
+      <td>5</td>
+      <td>4</td>
+      <td>13</td>
+      <td>3</td>
+      <td>9</td>
+      <td>2</td>
+      <td>8</td>
+      <td>4</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>D</td>
+      <td>4</td>
+      <td>11</td>
+      <td>6</td>
+      <td>8</td>
+      <td>6</td>
+      <td>10</td>
+      <td>6</td>
+      <td>2</td>
+      <td>6</td>
+      <td>10</td>
+      <td>3</td>
+      <td>7</td>
+      <td>3</td>
+      <td>7</td>
+      <td>3</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>N</td>
+      <td>7</td>
+      <td>11</td>
+      <td>6</td>
+      <td>6</td>
+      <td>3</td>
+      <td>5</td>
+      <td>9</td>
+      <td>4</td>
+      <td>6</td>
+      <td>4</td>
+      <td>4</td>
+      <td>10</td>
+      <td>6</td>
+      <td>10</td>
+      <td>2</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>G</td>
+      <td>2</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>8</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>5</td>
+      <td>9</td>
+      <td>1</td>
+      <td>7</td>
+      <td>5</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>19995</th>
+      <td>D</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>4</td>
+      <td>2</td>
+      <td>8</td>
+      <td>3</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>19996</th>
+      <td>C</td>
+      <td>7</td>
+      <td>10</td>
+      <td>8</td>
+      <td>8</td>
+      <td>4</td>
+      <td>4</td>
+      <td>8</td>
+      <td>6</td>
+      <td>9</td>
+      <td>12</td>
+      <td>9</td>
+      <td>13</td>
+      <td>2</td>
+      <td>9</td>
+      <td>3</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>19997</th>
+      <td>T</td>
+      <td>6</td>
+      <td>9</td>
+      <td>6</td>
+      <td>7</td>
+      <td>5</td>
+      <td>6</td>
+      <td>11</td>
+      <td>3</td>
+      <td>7</td>
+      <td>11</td>
+      <td>9</td>
+      <td>5</td>
+      <td>2</td>
+      <td>12</td>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>19998</th>
+      <td>S</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>2</td>
+      <td>1</td>
+      <td>8</td>
+      <td>7</td>
+      <td>2</td>
+      <td>6</td>
+      <td>10</td>
+      <td>6</td>
+      <td>8</td>
+      <td>1</td>
+      <td>9</td>
+      <td>5</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>19999</th>
+      <td>A</td>
+      <td>4</td>
+      <td>9</td>
+      <td>6</td>
+      <td>6</td>
+      <td>2</td>
+      <td>9</td>
+      <td>5</td>
+      <td>3</td>
+      <td>1</td>
+      <td>8</td>
+      <td>1</td>
+      <td>8</td>
+      <td>2</td>
+      <td>7</td>
+      <td>2</td>
+      <td>8</td>
+    </tr>
+  </tbody>
+</table>
+<p>20000 rows × 17 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="fitur">
+<h3>Fitur<a class="headerlink" href="#fitur" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 20000 entries, 0 to 19999
+Data columns (total 17 columns):
+ #   Column  Non-Null Count  Dtype 
+---  ------  --------------  ----- 
+ 0   lettr   20000 non-null  object
+ 1   x-box   20000 non-null  int64 
+ 2   y-box   20000 non-null  int64 
+ 3   width   20000 non-null  int64 
+ 4   high    20000 non-null  int64 
+ 5   onpix   20000 non-null  int64 
+ 6   x-bar   20000 non-null  int64 
+ 7   y-bar   20000 non-null  int64 
+ 8   x2bar   20000 non-null  int64 
+ 9   y2bar   20000 non-null  int64 
+ 10  xybar   20000 non-null  int64 
+ 11  x2ybr   20000 non-null  int64 
+ 12  xy2br   20000 non-null  int64 
+ 13  x-ege   20000 non-null  int64 
+ 14  xegvy   20000 non-null  int64 
+ 15  y-ege   20000 non-null  int64 
+ 16  yegvx   20000 non-null  int64 
+dtypes: int64(16), object(1)
+memory usage: 2.6+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Di atas adalah informasi mengenai dataset yang saya gunakan, dengan fitur-fitur bernomor 1 hingga 16 dan lettr sebagai kelas dari dataset. Informasi tersebut juga menunjukkan bahwa tipe data yang digunakan adalah numerik. Berikut adalah penjelasan mengenai setiap fitur:</p>
+<ul class="simple">
+<li><p>x-box: Koordinat piksel paling kiri dari bounding box yang mengelilingi huruf</p></li>
+</ul>
+<ul class="simple">
+<li><p>y-box: Koordinat piksel paling atas dari bounding box yang mengelilingi huruf</p></li>
+</ul>
+<ul class="simple">
+<li><p>width: Lebar bounding box yang mengelilingi huruf dalam piksel.</p></li>
+</ul>
+<ul class="simple">
+<li><p>high: Tinggi bounding box yang mengelilingi huruf dalam piksel.</p></li>
+</ul>
+<ul class="simple">
+<li><p>onpix: Jumlah piksel yang berada di dalam bounding box yang sebenarnya merupakan bagian dari huruf (bukan latar belakang).</p></li>
+</ul>
+<ul class="simple">
+<li><p>x-bar: Rata-rata posisi x dari piksel yang merupakan bagian dari huruf dalam bounding box.</p></li>
+</ul>
+<ul class="simple">
+<li><p>y-bar: Rata-rata posisi y dari piksel yang merupakan bagian dari huruf dalam bounding box.</p></li>
+</ul>
+<ul class="simple">
+<li><p>x2bar: Rata-rata kuadrat dari posisi x dari piksel yang merupakan bagian dari huruf.</p></li>
+</ul>
+<ul class="simple">
+<li><p>y2bar: Rata-rata kuadrat dari posisi y dari piksel yang merupakan bagian dari huruf.</p></li>
+</ul>
+<ul class="simple">
+<li><p>xybar: Rata-rata hasil kali dari posisi x dan y dari piksel yang merupakan bagian dari huruf.</p></li>
+</ul>
+<ul class="simple">
+<li><p>x2ybr: Rata-rata hasil kali dari posisi x dan kuadrat dari posisi y dari piksel yang merupakan bagian dari huruf.</p></li>
+</ul>
+<ul class="simple">
+<li><p>xy2br: Rata-rata hasil kali dari posisi y dan kuadrat dari posisi x dari piksel yang merupakan bagian dari huruf.</p></li>
+</ul>
+<ul class="simple">
+<li><p>x-ege: Jumlah perubahan arah (edges) horizontal pada huruf dalam bounding box.</p></li>
+</ul>
+<ul class="simple">
+<li><p>xegvy: Jumlah perubahan arah (edges) vertikal pada huruf di tengah bounding box secara horizontal.</p></li>
+</ul>
+<ul class="simple">
+<li><p>y-ege: Jumlah perubahan arah (edges) vertikal pada huruf dalam bounding box.</p></li>
+</ul>
+<ul class="simple">
+<li><p>yegvx: Jumlah perubahan arah (edges) horizontal pada huruf di tengah bounding box secara vertikal.</p></li>
+</ul>
+<ul class="simple">
+<li><p>lettr: Huruf yang diwakili (A-Z). Ini adalah label atau target yang ingin diprediksi</p></li>
+</ul>
+</section>
+<section id="penjelasan-class">
+<h3>Penjelasan Class<a class="headerlink" href="#penjelasan-class" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_data</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="s1">&#39;lettr&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lettr
+U    813
+D    805
+P    803
+T    796
+M    792
+A    789
+X    787
+Y    786
+Q    783
+N    783
+F    775
+G    773
+E    768
+B    766
+V    764
+L    761
+R    758
+I    755
+O    753
+W    752
+S    748
+J    747
+K    739
+C    736
+H    734
+Z    734
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dari hasil diatas menunjukkan bahwa class dalam dataset yang digunakan ada di dalam kolom lettr dengan jumlah 26 class, yaitu :</p>
+<ul class="simple">
+<li><p>A</p></li>
+</ul>
+<ul class="simple">
+<li><p>B</p></li>
+</ul>
+<ul class="simple">
+<li><p>C</p></li>
+</ul>
+<ul class="simple">
+<li><p>D</p></li>
+</ul>
+<ul class="simple">
+<li><p>E</p></li>
+</ul>
+<ul class="simple">
+<li><p>F</p></li>
+</ul>
+<ul class="simple">
+<li><p>G</p></li>
+</ul>
+<ul class="simple">
+<li><p>H</p></li>
+</ul>
+<ul class="simple">
+<li><p>I</p></li>
+</ul>
+<ul class="simple">
+<li><p>J</p></li>
+</ul>
+<ul class="simple">
+<li><p>K</p></li>
+</ul>
+<ul class="simple">
+<li><p>L</p></li>
+</ul>
+<ul class="simple">
+<li><p>M</p></li>
+</ul>
+<ul class="simple">
+<li><p>N</p></li>
+</ul>
+<ul class="simple">
+<li><p>O</p></li>
+</ul>
+<ul class="simple">
+<li><p>P</p></li>
+</ul>
+<ul class="simple">
+<li><p>Q</p></li>
+</ul>
+<ul class="simple">
+<li><p>R</p></li>
+</ul>
+<ul class="simple">
+<li><p>S</p></li>
+</ul>
+<ul class="simple">
+<li><p>T</p></li>
+</ul>
+<ul class="simple">
+<li><p>U</p></li>
+</ul>
+<ul class="simple">
+<li><p>V</p></li>
+</ul>
+<ul class="simple">
+<li><p>W</p></li>
+</ul>
+<ul class="simple">
+<li><p>X</p></li>
+</ul>
+<ul class="simple">
+<li><p>Y</p></li>
+</ul>
+<ul class="simple">
+<li><p>Z</p></li>
+</ul>
+</section>
+</section>
+<section id="identifikasi-kualitas-data">
+<h2>Identifikasi kualitas data<a class="headerlink" href="#identifikasi-kualitas-data" title="Link to this heading">#</a></h2>
+<section id="identifikasi-outlier">
+<h3>Identifikasi Outlier<a class="headerlink" href="#identifikasi-outlier" title="Link to this heading">#</a></h3>
+<p>Algoritme Local Outlier Factor (LOF) adalah metode deteksi anomali tanpa pengawasan yang menghitung deviasi kepadatan lokal dari titik data tertentu terhadap titik data tetangganya. Ini menganggap sampel yang memiliki kepadatan jauh lebih rendah daripada sampel tetangganya sebagai outlier. Sebagai pedoman umum, nilai LOF (Local Outlier Factor) untuk data yang normal berada dalam rentang 1 hingga 1,5, sedangkan pengamatan yang bersifat anomali akan memiliki nilai LOF yang jauh lebih tinggi. Semakin tinggi nilai LOF, semakin besar kemungkinan data tersebut merupakan outlier. Jika sebuah titik data X memiliki LOF sebesar 5, ini berarti kepadatan rata-rata tetangganya adalah 5 kali lebih besar dibandingkan dengan kepadatan lokal dari titik X itu sendiri.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">LocalOutlierFactor</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df_data</span>
+<span class="c1"># df</span>
+
+<span class="c1"># simpan quality</span>
+<span class="n">letter_lettr</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;lettr&#39;</span><span class="p">]]</span>
+
+<span class="c1"># #hapus kolom yang tidak diperlukan</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;lettr&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># df_wine</span>
+<span class="c1"># df_wine.coloumns</span>
+
+<span class="c1"># # Inisialisasi dan fit model LOF</span>
+<span class="n">lof</span> <span class="o">=</span> <span class="n">LocalOutlierFactor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">contamination</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># Set parameter LOF</span>
+<span class="n">outlier_labels</span> <span class="o">=</span> <span class="n">lof</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># # Tambahkan label outlier dan quality k cve dataframe</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Outlier&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">outlier_labels</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;lettr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">letter_lettr</span>
+<span class="c1"># df_cleaned = df_wine[df_wine[&#39;Outlier&#39;] != -1]</span>
+
+<span class="c1"># Menampilkan outlier</span>
+<span class="n">outliers</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Outlier&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah outlier yang terdeteksi: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">outliers</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">outliers</span><span class="p">)</span>
+
+<span class="c1"># df_cleaned</span>
+<span class="n">df</span>
+<span class="c1"># print(df_cleaned[[&#39;quality&#39;,&#39;LOF_Score&#39;]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">MemoryError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">16</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># df_wine</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># df_wine.coloumns</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> 
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="c1"># # Inisialisasi dan fit model LOF</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">lof</span> <span class="o">=</span> <span class="n">LocalOutlierFactor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">contamination</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># Set parameter LOF</span>
+<span class="ne">---&gt; </span><span class="mi">16</span> <span class="n">outlier_labels</span> <span class="o">=</span> <span class="n">lof</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="c1"># # Tambahkan label outlier dan quality k cve dataframe</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Outlier&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">outlier_labels</span>
+
+<span class="nn">File C:\laragon\bin\python\python-3.10\lib\site-packages\sklearn\neighbors\_lof.py:256,</span> in <span class="ni">LocalOutlierFactor.fit_predict</span><span class="nt">(self, X, y)</span>
+<span class="g g-Whitespace">    </span><span class="mi">232</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Fit the model to the training set X and return the labels.</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span><span class="sd"> **Not available for novelty detection (when novelty is set to True).**</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">250</span><span class="sd">     Returns -1 for anomalies/outliers and 1 for inliers.</span>
+<span class="g g-Whitespace">    </span><span class="mi">251</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">253</span> <span class="c1"># As fit_predict would be different from fit.predict, fit_predict is</span>
+<span class="g g-Whitespace">    </span><span class="mi">254</span> <span class="c1"># only available for outlier detection (novelty=False)</span>
+<span class="ne">--&gt; </span><span class="mi">256</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">_predict</span><span class="p">()</span>
+
+<span class="nn">File C:\laragon\bin\python\python-3.10\lib\site-packages\sklearn\base.py:1473,</span> in <span class="ni">_fit_context.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(estimator, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1466</span>     <span class="n">estimator</span><span class="o">.</span><span class="n">_validate_params</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1468</span> <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1469</span>     <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1470</span>         <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
+<span class="g g-Whitespace">   </span><span class="mi">1471</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1472</span> <span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1473</span>     <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File C:\laragon\bin\python\python-3.10\lib\site-packages\sklearn\neighbors\_lof.py:291,</span> in <span class="ni">LocalOutlierFactor.fit</span><span class="nt">(self, X, y)</span>
+<span class="g g-Whitespace">    </span><span class="mi">283</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">284</span>         <span class="s2">&quot;n_neighbors (</span><span class="si">%s</span><span class="s2">) is greater than the &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">285</span>         <span class="s2">&quot;total number of samples (</span><span class="si">%s</span><span class="s2">). n_neighbors &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">286</span>         <span class="s2">&quot;will be set to (n_samples - 1) for estimation.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">287</span>         <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_neighbors</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">288</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">289</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_neighbors_</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_neighbors</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+<span class="ne">--&gt; </span><span class="mi">291</span> <span class="bp">self</span><span class="o">.</span><span class="n">_distances_fit_X_</span><span class="p">,</span> <span class="n">_neighbors_indices_fit_X_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">292</span>     <span class="n">n_neighbors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_neighbors_</span>
+<span class="g g-Whitespace">    </span><span class="mi">293</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">295</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit_X</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">296</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_distances_fit_X_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_distances_fit_X_</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">297</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_fit_X</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">298</span>         <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">299</span>     <span class="p">)</span>
+
+<span class="nn">File C:\laragon\bin\python\python-3.10\lib\site-packages\sklearn\neighbors\_base.py:886,</span> in <span class="ni">KNeighborsMixin.kneighbors</span><span class="nt">(self, X, n_neighbors, return_distance)</span>
+<span class="g g-Whitespace">    </span><span class="mi">883</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">884</span>         <span class="n">kwds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">effective_metric_params_</span>
+<span class="ne">--&gt; </span><span class="mi">886</span>     <span class="n">chunked_results</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">887</span>         <span class="n">pairwise_distances_chunked</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">888</span>             <span class="n">X</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">889</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_fit_X</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">890</span>             <span class="n">reduce_func</span><span class="o">=</span><span class="n">reduce_func</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">891</span>             <span class="n">metric</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">effective_metric_</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">892</span>             <span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">893</span>             <span class="o">**</span><span class="n">kwds</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">894</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">895</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">897</span> <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit_method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;ball_tree&quot;</span><span class="p">,</span> <span class="s2">&quot;kd_tree&quot;</span><span class="p">]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">898</span>     <span class="k">if</span> <span class="n">issparse</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+
+<span class="nn">File C:\laragon\bin\python\python-3.10\lib\site-packages\sklearn\metrics\pairwise.py:2161,</span> in <span class="ni">pairwise_distances_chunked</span><span class="nt">(X, Y, reduce_func, metric, n_jobs, working_memory, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2159</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2160</span>     <span class="n">X_chunk</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">sl</span><span class="p">]</span>
+<span class="ne">-&gt; </span><span class="mi">2161</span> <span class="n">D_chunk</span> <span class="o">=</span> <span class="n">pairwise_distances</span><span class="p">(</span><span class="n">X_chunk</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2162</span> <span class="k">if</span> <span class="p">(</span><span class="n">X</span> <span class="ow">is</span> <span class="n">Y</span> <span class="ow">or</span> <span class="n">Y</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="n">PAIRWISE_DISTANCE_FUNCTIONS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2163</span>     <span class="n">metric</span><span class="p">,</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">2164</span> <span class="p">)</span> <span class="ow">is</span> <span class="n">euclidean_distances</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2165</span>     <span class="c1"># zeroing diagonal, taking care of aliases of &quot;euclidean&quot;,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2166</span>     <span class="c1"># i.e. &quot;l2&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">2167</span>     <span class="n">D_chunk</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="n">sl</span><span class="o">.</span><span class="n">start</span> <span class="p">::</span> <span class="n">_num_samples</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="nn">File C:\laragon\bin\python\python-3.10\lib\site-packages\sklearn\utils\_param_validation.py:213,</span> in <span class="ni">validate_params.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">207</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">208</span>     <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span>         <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span>             <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
+<span class="g g-Whitespace">    </span><span class="mi">211</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">212</span>     <span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">213</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span> <span class="k">except</span> <span class="n">InvalidParameterError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span>     <span class="c1"># When the function is just a wrapper around an estimator, we allow</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span>     <span class="c1"># the function to delegate validation to the estimator, but we replace</span>
+<span class="g g-Whitespace">    </span><span class="mi">217</span>     <span class="c1"># the name of the estimator by the name of the function in the error</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span>     <span class="c1"># message to avoid confusion.</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span>     <span class="n">msg</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span>         <span class="sa">r</span><span class="s2">&quot;parameter of \w+ must be&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span>         <span class="sa">f</span><span class="s2">&quot;parameter of </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2"> must be&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span>         <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span>     <span class="p">)</span>
+
+<span class="nn">File C:\laragon\bin\python\python-3.10\lib\site-packages\sklearn\metrics\pairwise.py:2364,</span> in <span class="ni">pairwise_distances</span><span class="nt">(X, Y, metric, n_jobs, force_all_finite, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2361</span>         <span class="k">return</span> <span class="n">distance</span><span class="o">.</span><span class="n">squareform</span><span class="p">(</span><span class="n">distance</span><span class="o">.</span><span class="n">pdist</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">2362</span>     <span class="n">func</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">distance</span><span class="o">.</span><span class="n">cdist</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2364</span> <span class="k">return</span> <span class="n">_parallel_pairwise</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">n_jobs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File C:\laragon\bin\python\python-3.10\lib\site-packages\sklearn\metrics\pairwise.py:1882,</span> in <span class="ni">_parallel_pairwise</span><span class="nt">(X, Y, func, n_jobs, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1879</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">_return_float_dtype</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1881</span> <span class="k">if</span> <span class="n">effective_n_jobs</span><span class="p">(</span><span class="n">n_jobs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1882</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1884</span> <span class="c1"># enforce a threading backend to prevent data communication overhead</span>
+<span class="g g-Whitespace">   </span><span class="mi">1885</span> <span class="n">fd</span> <span class="o">=</span> <span class="n">delayed</span><span class="p">(</span><span class="n">_dist_wrapper</span><span class="p">)</span>
+
+<span class="nn">File C:\laragon\bin\python\python-3.10\lib\site-packages\sklearn\utils\_param_validation.py:186,</span> in <span class="ni">validate_params.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">184</span> <span class="n">global_skip_validation</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">()[</span><span class="s2">&quot;skip_parameter_validation&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span> <span class="k">if</span> <span class="n">global_skip_validation</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">186</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span> <span class="n">func_sig</span> <span class="o">=</span> <span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">190</span> <span class="c1"># Map *args/**kwargs to the function signature</span>
+
+<span class="nn">File C:\laragon\bin\python\python-3.10\lib\site-packages\sklearn\metrics\pairwise.py:361,</span> in <span class="ni">euclidean_distances</span><span class="nt">(X, Y, Y_norm_squared, squared, X_norm_squared)</span>
+<span class="g g-Whitespace">    </span><span class="mi">355</span>     <span class="k">if</span> <span class="n">Y_norm_squared</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+<span class="g g-Whitespace">    </span><span class="mi">356</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">357</span>             <span class="sa">f</span><span class="s2">&quot;Incompatible dimensions for Y of shape </span><span class="si">{</span><span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> and &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">358</span>             <span class="sa">f</span><span class="s2">&quot;Y_norm_squared of shape </span><span class="si">{</span><span class="n">original_shape</span><span class="si">}</span><span class="s2">.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">359</span>         <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">361</span> <span class="k">return</span> <span class="n">_euclidean_distances</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">X_norm_squared</span><span class="p">,</span> <span class="n">Y_norm_squared</span><span class="p">,</span> <span class="n">squared</span><span class="p">)</span>
+
+<span class="nn">File C:\laragon\bin\python\python-3.10\lib\site-packages\sklearn\metrics\pairwise.py:396,</span> in <span class="ni">_euclidean_distances</span><span class="nt">(X, Y, X_norm_squared, Y_norm_squared, squared)</span>
+<span class="g g-Whitespace">    </span><span class="mi">393</span>     <span class="n">distances</span> <span class="o">=</span> <span class="n">_euclidean_distances_upcast</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">XX</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">YY</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">394</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">395</span>     <span class="c1"># if dtype is already float64, no need to chunk and upcast</span>
+<span class="ne">--&gt; </span><span class="mi">396</span>     <span class="n">distances</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">safe_sparse_dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">dense_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">397</span>     <span class="n">distances</span> <span class="o">+=</span> <span class="n">XX</span>
+<span class="g g-Whitespace">    </span><span class="mi">398</span>     <span class="n">distances</span> <span class="o">+=</span> <span class="n">YY</span>
+
+<span class="ne">MemoryError</span>: Unable to allocate 1.00 GiB for an array with shape (6710, 20000) and data type float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Penjelasan Code:</p>
+<p>Pada kode di atas, untuk menentukan apakah setiap dataset memiliki data anomali, saya akan menghitung setiap fiturnya. Sebelum melakukan perhitungan, saya simpan terlebih dahulu class atau lettr yang ada ke dalam variabel baru. Setelah itu, hapus kolom  dari dataframe. Lalu, kita lakukan perhitungan Local Outlier Factor (LOF) menggunakan library sklearn’s Local Outlier Factor. Setelah mendapatkan nilai outlier dari setiap fitur, tampilkan hasilnya dan gabungkan ke dalam dataframe. Dari hasil perhitungan tersebut, kita dapat melihat bahwa dataframe memiliki outlier yang ditandai dengan nilai -1.</p>
+</section>
+<section id="cek-missing-values">
+<h3>Cek Missing Values<a class="headerlink" href="#cek-missing-values" title="Link to this heading">#</a></h3>
+<p>Disini akan dilakukan pengecekan apakah dataset yang digunakan memiliki missing value atau tidak, untuk mengetahuinya bisa menggunakan code dibawah ini:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">df_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x-box      0
+y-box      0
+width      0
+high       0
+onpix      0
+x-bar      0
+y-bar      0
+x2bar      0
+y2bar      0
+xybar      0
+x2ybr      0
+xy2br      0
+x-ege      0
+xegvy      0
+y-ege      0
+yegvx      0
+Outlier    0
+lettr      0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dari kode di atas, dapat mengetahui bahwa dataset yang digunakan tidak memiliki missing value.</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="pre-processing-data">
+<h1>PRE PROCESSING DATA<a class="headerlink" href="#pre-processing-data" title="Link to this heading">#</a></h1>
+<p>Data preprocessing adalah bagian dari persiapan data, yang mencakup berbagai jenis pemrosesan yang dilakukan pada data mentah agar siap untuk analisis lanjutan, seperti visualisasi data dan pembentukan model. Preprocessing data bertujuan untuk mengubah data menjadi format yang lebih mudah dan efektif digunakan. Proses ini merupakan langkah awal yang penting dalam data mining. Selain itu, teknik data preprocessing juga digunakan untuk melatih model machine learning. Berikut adalah tahapan pra-pemrosesan data yang dilakukan pada dataset  yang saya miliki:</p>
+<ol class="arabic simple">
+<li><p>Pembersihan Data (Data Cleaning):  Tahap pertama yang perlu dilakukan ketika akan preprocessing data adalah data cleaning atau membersihkan data. Artinya, data mentah yang telah diperoleh perlu diseleksi kembali. Kemudian, hapus atau hilangkan data-data yang tidak lengkap, tidak relevan, dan tidak akurat.</p></li>
+</ol>
+<ol class="arabic simple" start="2">
+<li><p>Penggabungan Data (Data Integration): Integrasi data adalah tahapan dalam preprocessing data yang bertujuan untuk mengumpulkan data dari berbagai sumber dan menggabungkannya menjadi satu penyimpanan data yang lebih besar, seperti data warehouse.</p></li>
+</ol>
+<section id="penanganan-outlier-dengan-menghapus-outlier">
+<h2>Penanganan Outlier Dengan Menghapus Outlier<a class="headerlink" href="#penanganan-outlier-dengan-menghapus-outlier" title="Link to this heading">#</a></h2>
+<p>Untuk menangani data anomali, kita dapat menghapus data yang memiliki nilai outlier atau nilai anomali. Dalam dataframe di atas, diketahui bahwa data anomali memiliki nilai -1, sehingga kita akan menghapus baris-baris yang berisi data outlier tersebut. Berikut adalah hasil setelah penghapusan data anomali:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Outlier&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x-box</th>
+      <th>y-box</th>
+      <th>width</th>
+      <th>high</th>
+      <th>onpix</th>
+      <th>x-bar</th>
+      <th>y-bar</th>
+      <th>x2bar</th>
+      <th>y2bar</th>
+      <th>xybar</th>
+      <th>x2ybr</th>
+      <th>xy2br</th>
+      <th>x-ege</th>
+      <th>xegvy</th>
+      <th>y-ege</th>
+      <th>yegvx</th>
+      <th>Outlier</th>
+      <th>lettr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>4</th>
+      <td>2</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>8</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>5</td>
+      <td>9</td>
+      <td>1</td>
+      <td>7</td>
+      <td>5</td>
+      <td>10</td>
+      <td>-1</td>
+      <td>G</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>6</td>
+      <td>11</td>
+      <td>7</td>
+      <td>8</td>
+      <td>3</td>
+      <td>7</td>
+      <td>8</td>
+      <td>7</td>
+      <td>11</td>
+      <td>4</td>
+      <td>7</td>
+      <td>14</td>
+      <td>1</td>
+      <td>7</td>
+      <td>4</td>
+      <td>8</td>
+      <td>-1</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>2</td>
+      <td>3</td>
+      <td>3</td>
+      <td>4</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>5</td>
+      <td>6</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>8</td>
+      <td>0</td>
+      <td>8</td>
+      <td>-1</td>
+      <td>L</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>5</td>
+      <td>9</td>
+      <td>7</td>
+      <td>7</td>
+      <td>10</td>
+      <td>9</td>
+      <td>8</td>
+      <td>4</td>
+      <td>4</td>
+      <td>6</td>
+      <td>8</td>
+      <td>6</td>
+      <td>6</td>
+      <td>11</td>
+      <td>8</td>
+      <td>7</td>
+      <td>-1</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>4</td>
+      <td>10</td>
+      <td>5</td>
+      <td>7</td>
+      <td>5</td>
+      <td>8</td>
+      <td>7</td>
+      <td>3</td>
+      <td>8</td>
+      <td>5</td>
+      <td>6</td>
+      <td>6</td>
+      <td>3</td>
+      <td>8</td>
+      <td>6</td>
+      <td>8</td>
+      <td>-1</td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>19929</th>
+      <td>6</td>
+      <td>11</td>
+      <td>6</td>
+      <td>6</td>
+      <td>3</td>
+      <td>7</td>
+      <td>9</td>
+      <td>3</td>
+      <td>4</td>
+      <td>8</td>
+      <td>9</td>
+      <td>6</td>
+      <td>5</td>
+      <td>9</td>
+      <td>3</td>
+      <td>6</td>
+      <td>-1</td>
+      <td>V</td>
+    </tr>
+    <tr>
+      <th>19952</th>
+      <td>2</td>
+      <td>9</td>
+      <td>4</td>
+      <td>7</td>
+      <td>2</td>
+      <td>7</td>
+      <td>13</td>
+      <td>0</td>
+      <td>5</td>
+      <td>7</td>
+      <td>10</td>
+      <td>8</td>
+      <td>0</td>
+      <td>8</td>
+      <td>0</td>
+      <td>8</td>
+      <td>-1</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <th>19964</th>
+      <td>3</td>
+      <td>9</td>
+      <td>3</td>
+      <td>6</td>
+      <td>2</td>
+      <td>3</td>
+      <td>6</td>
+      <td>6</td>
+      <td>10</td>
+      <td>7</td>
+      <td>7</td>
+      <td>14</td>
+      <td>0</td>
+      <td>8</td>
+      <td>7</td>
+      <td>8</td>
+      <td>-1</td>
+      <td>E</td>
+    </tr>
+    <tr>
+      <th>19984</th>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>8</td>
+      <td>7</td>
+      <td>4</td>
+      <td>6</td>
+      <td>5</td>
+      <td>6</td>
+      <td>8</td>
+      <td>0</td>
+      <td>8</td>
+      <td>7</td>
+      <td>8</td>
+      <td>-1</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>19989</th>
+      <td>2</td>
+      <td>1</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>4</td>
+      <td>10</td>
+      <td>3</td>
+      <td>5</td>
+      <td>10</td>
+      <td>8</td>
+      <td>5</td>
+      <td>0</td>
+      <td>9</td>
+      <td>3</td>
+      <td>7</td>
+      <td>-1</td>
+      <td>P</td>
+    </tr>
+  </tbody>
+</table>
+<p>2000 rows × 18 columns</p>
+</div></div></div>
+</div>
+<p>Di atas, kita dapat mengidentifikasi baris yang memiliki nilai outlier. Setelah mengetahui data outlier tersebut, kita dapat menghapus baris-baris tersebut sebagai langkah untuk menangani nilai anomali.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_cleaned</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Outlier&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">df_cleaned</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x-box</th>
+      <th>y-box</th>
+      <th>width</th>
+      <th>high</th>
+      <th>onpix</th>
+      <th>x-bar</th>
+      <th>y-bar</th>
+      <th>x2bar</th>
+      <th>y2bar</th>
+      <th>xybar</th>
+      <th>x2ybr</th>
+      <th>xy2br</th>
+      <th>x-ege</th>
+      <th>xegvy</th>
+      <th>y-ege</th>
+      <th>yegvx</th>
+      <th>Outlier</th>
+      <th>lettr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>8</td>
+      <td>3</td>
+      <td>5</td>
+      <td>1</td>
+      <td>8</td>
+      <td>13</td>
+      <td>0</td>
+      <td>6</td>
+      <td>6</td>
+      <td>10</td>
+      <td>8</td>
+      <td>0</td>
+      <td>8</td>
+      <td>0</td>
+      <td>8</td>
+      <td>1</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5</td>
+      <td>12</td>
+      <td>3</td>
+      <td>7</td>
+      <td>2</td>
+      <td>10</td>
+      <td>5</td>
+      <td>5</td>
+      <td>4</td>
+      <td>13</td>
+      <td>3</td>
+      <td>9</td>
+      <td>2</td>
+      <td>8</td>
+      <td>4</td>
+      <td>10</td>
+      <td>1</td>
+      <td>I</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>11</td>
+      <td>6</td>
+      <td>8</td>
+      <td>6</td>
+      <td>10</td>
+      <td>6</td>
+      <td>2</td>
+      <td>6</td>
+      <td>10</td>
+      <td>3</td>
+      <td>7</td>
+      <td>3</td>
+      <td>7</td>
+      <td>3</td>
+      <td>9</td>
+      <td>1</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7</td>
+      <td>11</td>
+      <td>6</td>
+      <td>6</td>
+      <td>3</td>
+      <td>5</td>
+      <td>9</td>
+      <td>4</td>
+      <td>6</td>
+      <td>4</td>
+      <td>4</td>
+      <td>10</td>
+      <td>6</td>
+      <td>10</td>
+      <td>2</td>
+      <td>8</td>
+      <td>1</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>4</td>
+      <td>11</td>
+      <td>5</td>
+      <td>8</td>
+      <td>3</td>
+      <td>8</td>
+      <td>8</td>
+      <td>6</td>
+      <td>9</td>
+      <td>5</td>
+      <td>6</td>
+      <td>6</td>
+      <td>0</td>
+      <td>8</td>
+      <td>9</td>
+      <td>7</td>
+      <td>1</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>19995</th>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>4</td>
+      <td>2</td>
+      <td>8</td>
+      <td>3</td>
+      <td>7</td>
+      <td>1</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <th>19996</th>
+      <td>7</td>
+      <td>10</td>
+      <td>8</td>
+      <td>8</td>
+      <td>4</td>
+      <td>4</td>
+      <td>8</td>
+      <td>6</td>
+      <td>9</td>
+      <td>12</td>
+      <td>9</td>
+      <td>13</td>
+      <td>2</td>
+      <td>9</td>
+      <td>3</td>
+      <td>7</td>
+      <td>1</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>19997</th>
+      <td>6</td>
+      <td>9</td>
+      <td>6</td>
+      <td>7</td>
+      <td>5</td>
+      <td>6</td>
+      <td>11</td>
+      <td>3</td>
+      <td>7</td>
+      <td>11</td>
+      <td>9</td>
+      <td>5</td>
+      <td>2</td>
+      <td>12</td>
+      <td>2</td>
+      <td>4</td>
+      <td>1</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <th>19998</th>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>2</td>
+      <td>1</td>
+      <td>8</td>
+      <td>7</td>
+      <td>2</td>
+      <td>6</td>
+      <td>10</td>
+      <td>6</td>
+      <td>8</td>
+      <td>1</td>
+      <td>9</td>
+      <td>5</td>
+      <td>8</td>
+      <td>1</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>19999</th>
+      <td>4</td>
+      <td>9</td>
+      <td>6</td>
+      <td>6</td>
+      <td>2</td>
+      <td>9</td>
+      <td>5</td>
+      <td>3</td>
+      <td>1</td>
+      <td>8</td>
+      <td>1</td>
+      <td>8</td>
+      <td>2</td>
+      <td>7</td>
+      <td>2</td>
+      <td>8</td>
+      <td>1</td>
+      <td>A</td>
+    </tr>
+  </tbody>
+</table>
+<p>18000 rows × 18 columns</p>
+</div></div></div>
+</div>
+<p>Penjelasan code</p>
+<p>Kode tersebut membersihkan dataset dengan menghapus baris yang dianggap sebagai outlier. Baris-baris yang memiliki nilai -1 pada kolom ‘Outlier’ dihapus, sehingga DataFrame baru <code class="docutils literal notranslate"><span class="pre">df_cleaned</span></code> hanya berisi data yang tidak mengandung outlier.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Memeriksa nama kolom yang ada dalam DataFrame</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="c1"># Membuat mapping antara huruf A-Z ke angka 1-26</span>
+<span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="nb">chr</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">64</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">91</span><span class="p">)}</span>
+
+<span class="c1"># Membersihkan kolom &#39;lettr&#39;: menghapus spasi, mengubah huruf kecil menjadi huruf besar</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;lettr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;lettr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+
+<span class="c1"># Menerapkan mapping pada kolom &#39;lettr&#39;</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;lettr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;lettr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
+
+<span class="c1"># Menampilkan nilai unik hasil mapping</span>
+<span class="n">unique_values</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;lettr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">unique_values</span><span class="p">)</span>
+
+<span class="c1"># Memeriksa beberapa baris pertama dari DataFrame untuk memastikan mapping berhasil</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;letter-recognition.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;x-box&#39;, &#39;y-box&#39;, &#39;width&#39;, &#39;high&#39;, &#39;onpix&#39;, &#39;x-bar&#39;, &#39;y-bar&#39;, &#39;x2bar&#39;,
+       &#39;y2bar&#39;, &#39;xybar&#39;, &#39;x2ybr&#39;, &#39;xy2br&#39;, &#39;x-ege&#39;, &#39;xegvy&#39;, &#39;y-ege&#39;, &#39;yegvx&#39;,
+       &#39;Outlier&#39;, &#39;lettr&#39;],
+      dtype=&#39;object&#39;)
+[20  9  4 14  7 19  2  1 10 13 24 15 18  6  3  8 23 12 16  5 22 25 17 21
+ 11 26]
+   x-box  y-box  width  high  onpix  x-bar  y-bar  x2bar  y2bar  xybar  x2ybr  \
+0      2      8      3     5      1      8     13      0      6      6     10   
+1      5     12      3     7      2     10      5      5      4     13      3   
+2      4     11      6     8      6     10      6      2      6     10      3   
+3      7     11      6     6      3      5      9      4      6      4      4   
+4      2      1      3     1      1      8      6      6      6      6      5   
+
+   xy2br  x-ege  xegvy  y-ege  yegvx  Outlier  lettr  
+0      8      0      8      0      8        1     20  
+1      9      2      8      4     10        1      9  
+2      7      3      7      3      9        1      4  
+3     10      6     10      2      8        1     14  
+4      9      1      7      5     10       -1      7  
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="modelling">
+<h1>MODELLING<a class="headerlink" href="#modelling" title="Link to this heading">#</a></h1>
+<section id="k-nearest-neighbour">
+<h2>K-Nearest Neighbour<a class="headerlink" href="#k-nearest-neighbour" title="Link to this heading">#</a></h2>
+<p>K-nearest neighbor merupakan algoritma yang digunakan untuk mengidentifikasi adanya persamaan antara data baru dan lama. Kemudian, algoritma satu ini akan memasukkan data baru tersebut dalam kategori yang paling mirip dengan kategori yang telah ada sebelumnya. Dengan kata lain, K-nearest neighbor menyimpan seluruh data lama dan mengklasifikasikan data point baru berdasarkan kemiripan.</p>
+<p>KNN (K-Nearest Neighbors) adalah algoritma yang sederhana dan mudah dimengerti, namun memberikan hasil yang baik untuk berbagai masalah klasifikasi. Algoritma ini dapat diterapkan pada kumpulan data kecil maupun besar. Namun, KNN juga memiliki kelemahan, terutama dalam komputasi yang mahal untuk kumpulan data besar atau ruang fitur berdimensi tinggi.</p>
+<p>Algoritma KNN banyak digunakan dalam berbagai aplikasi salah satu ontohnya adalah kumpulan data untuk iklan jaringan sosial. Dataset yang ada di sana berisi rincian pengguna suatu situs jejaring sosial. Akan tercatat apakah seorang pengguna membeli suatu produk dengan meng-klik iklan di situs berdasarkan gaji, usia, atau jenis kelamin mereka.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="c1"># Mengakses dataset melalui csv</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;letter-recognition.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Menghapus kolom yang tidak relevan</span>
+<span class="c1">#df.drop(&quot;Unnamed: 0&quot;, axis=1, inplace=True)</span>
+<span class="c1">#df.drop(&quot;Outlier&quot;, axis=1, inplace=True)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;x-box&#39;</span><span class="p">,</span><span class="s1">&#39;y-box&#39;</span><span class="p">,</span><span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;onpix&#39;</span><span class="p">,</span> <span class="s1">&#39;x-bar&#39;</span><span class="p">,</span> <span class="s1">&#39;y-bar&#39;</span><span class="p">,</span> <span class="s1">&#39;x2bar&#39;</span><span class="p">,</span> <span class="s1">&#39;y2bar&#39;</span><span class="p">,</span> <span class="s1">&#39;xybar&#39;</span><span class="p">,</span> <span class="s1">&#39;x2ybr&#39;</span><span class="p">,</span> <span class="s1">&#39;xy2br&#39;</span><span class="p">,</span> <span class="s1">&#39;x-ege&#39;</span><span class="p">,</span> <span class="s1">&#39;xegvy&#39;</span><span class="p">,</span> <span class="s1">&#39;y-ege&#39;</span><span class="p">,</span> <span class="s1">&#39;yegvx&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;lettr&#39;</span><span class="p">]</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">Y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># X_test</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Penjelasan code</p>
+<p>Code diatas digunakan untuk memisahkan dataset menjadi data train dan juga data test.Data training akan digunakan untuk proses pelatihan model, sedangkan data testing akan dipakai untuk menguji kinerja model. Langkah-langkah yang harus dilakukan adalah memisahkan fitur dan kelas, menyimpannya ke dalam variabel terpisah, kemudian membagi data tersebut menjadi dua bagian, dengan proporsi 80% untuk data training dan 20% untuk data testing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Standardisasi fitur</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Membuat model KNN</span>
+<span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># knn</span>
+
+<span class="c1"># Melatih model pada training set</span>
+<span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
+
+<span class="c1"># Memprediksi target pada testing set</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Menghitung akurasi model</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">Y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Akurasi:&#39;</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Akurasi : </span><span class="si">{</span><span class="n">accuracy</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 0.9355
+Akurasi : 93.55%
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pejelasan code</p>
+<p>Code di atas menjelaskan penggunaan metode KNN untuk menentukan tingkat akurasi data. Setelah dataset dibagi menjadi data training dan data testing, langkah selanjutnya adalah membuat model KNN dan melatihnya menggunakan data training. Kemudian, model tersebut digunakan untuk memprediksi data testing. Akhirnya, hasil akurasi dari prediksi tersebut disimpan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pastikan bahwa df1_train dan df1_test memiliki jumlah fitur yang sama</span>
+<span class="c1"># assert X_train.shape[1] == X_test.shape[1], &quot;Jumlah fitur pada X_train dan X_test tidak sama.&quot;</span>
+
+<span class="c1"># Standardisasi fitur</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Inisialisasi dan latih model KNN</span>
+<span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
+
+<span class="c1"># Data Baru yang Akan di Klasifikasikan</span>
+<span class="n">X_new</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;11&#39;</span><span class="p">,</span><span class="s1">&#39;15&#39;</span><span class="p">,</span><span class="s1">&#39;13&#39;</span><span class="p">,</span><span class="s1">&#39;9&#39;</span><span class="p">,</span><span class="s1">&#39;7&#39;</span><span class="p">,</span><span class="s1">&#39;13&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;6&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;12&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;9&#39;</span><span class="p">,</span><span class="s1">&#39;8&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;8&#39;</span><span class="p">]]</span>  <span class="c1"># Pastikan jumlah fitur sama</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_new</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;Jumlah fitur pada X_new tidak sesuai dengan X_train.&quot;</span>
+
+<span class="n">X_new</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>  <span class="c1"># Jangan lupa untuk menstandarkan data baru</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Data X memiliki quality: </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Evaluasi Keakuratan</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Nilai Keakuratan: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Akurasi : </span><span class="si">{</span><span class="n">accuracy</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data X memiliki quality: 13
+Nilai Keakuratan: 0.935500
+Akurasi : 93.55%
+</pre></div>
+</div>
+</div>
+</div>
+<p>Penjelasan code</p>
+<p>Code di atas menjelaskan bahwa kode tersebut digunakan untuk menentukan kelas dari data yang sedang diprediksi. Hasil prediksi tersebut kemudian dievaluasi untuk mengukur akurasinya, dan hasil akurasi ini dinyatakan dalam bentuk persentase.</p>
+</section>
+<section id="gaussian-naive-bayes-classification">
+<h2>GAUSSIAN NAIVE BAYES CLASSIFICATION<a class="headerlink" href="#gaussian-naive-bayes-classification" title="Link to this heading">#</a></h2>
+<p>Gaussian Naive Bayes merupakan sebuah teknik klasifikasi yang digunakan dalam machine learning dengan menggunakan metode probability dan Distribusi Gaussian atau Distiribusi Normal. Gaussian Distribution mengasumsikan bahwa setiap feature pada data memiliki pengaruh yang independent dalam memprediksi target. Kombinasi prediksi dari seluruh parameter adalah prediksi akhir dengan probability dari target variable yang diklasifikasikan ke dalam dua kelas. Klasifikasi akhirnya adalah hasil probability yang lebih tinggi dari grup target.</p>
+<section id="membaca-data-dari-file-csv">
+<h3>Membaca data dari file csv<a class="headerlink" href="#membaca-data-dari-file-csv" title="Link to this heading">#</a></h3>
+<p>Sebelum memulai perhitungan tentunya kita perlu mengambil data yang sudah dipilih</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;letter-recognition.data&#39;</span>
+<span class="n">dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;letter-recognition.csv&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dataframe</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   x-box  y-box  width  high  onpix  x-bar  y-bar  x2bar  y2bar  xybar  x2ybr  \
+0      2      8      3     5      1      8     13      0      6      6     10   
+1      5     12      3     7      2     10      5      5      4     13      3   
+2      4     11      6     8      6     10      6      2      6     10      3   
+3      7     11      6     6      3      5      9      4      6      4      4   
+4      2      1      3     1      1      8      6      6      6      6      5   
+
+   xy2br  x-ege  xegvy  y-ege  yegvx  Outlier  lettr  
+0      8      0      8      0      8        1     20  
+1      9      2      8      4     10        1      9  
+2      7      3      7      3      9        1      4  
+3     10      6     10      2      8        1     14  
+4      9      1      7      5     10       -1      7  
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="membagi-data">
+<h3>Membagi Data<a class="headerlink" href="#membagi-data" title="Link to this heading">#</a></h3>
+<p>Disini akan dilakukan pembagian data untuk mempermudah perhitungan, saya membagi data test menjadi 20% dan data train 80%. Dilakukannya hal ini agar saat kita melakukan prediksi terhadap data baru, kita mendapat hasil yang lebih efektif.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># Mengakses dataset melalui csv</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;letter-recognition.csv&#39;</span><span class="p">)</span>
+<span class="c1"># Menghapus kolom yang tidak relevan</span>
+<span class="c1"># df.drop(&quot;Unnamed: 0&quot;, axis=1, inplace=True)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;x-box&#39;</span><span class="p">,</span><span class="s1">&#39;y-box&#39;</span><span class="p">,</span><span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;onpix&#39;</span><span class="p">,</span> <span class="s1">&#39;x-bar&#39;</span><span class="p">,</span> <span class="s1">&#39;y-bar&#39;</span><span class="p">,</span> <span class="s1">&#39;x2bar&#39;</span><span class="p">,</span> <span class="s1">&#39;y2bar&#39;</span><span class="p">,</span> <span class="s1">&#39;xybar&#39;</span><span class="p">,</span> <span class="s1">&#39;x2ybr&#39;</span><span class="p">,</span> <span class="s1">&#39;xy2br&#39;</span><span class="p">,</span> <span class="s1">&#39;x-ege&#39;</span><span class="p">,</span> <span class="s1">&#39;xegvy&#39;</span><span class="p">,</span> <span class="s1">&#39;y-ege&#39;</span><span class="p">,</span> <span class="s1">&#39;yegvx&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span> <span class="s1">&#39;lettr&#39;</span><span class="p">]</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">Y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="c1"># X_test</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Penjelasan code</p>
+<p>Code diatas merupakan code untuk membagi data menjadi data training dan juga data testing untuk dilakukan perhitungan menggunakan metode gaussian naive bayes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">X_train</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">Y_train</span>
+
+<span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+
+<span class="n">df_train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x-box</th>
+      <th>y-box</th>
+      <th>width</th>
+      <th>high</th>
+      <th>onpix</th>
+      <th>x-bar</th>
+      <th>y-bar</th>
+      <th>x2bar</th>
+      <th>y2bar</th>
+      <th>xybar</th>
+      <th>x2ybr</th>
+      <th>xy2br</th>
+      <th>x-ege</th>
+      <th>xegvy</th>
+      <th>y-ege</th>
+      <th>yegvx</th>
+      <th>lettr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>15275</th>
+      <td>3</td>
+      <td>5</td>
+      <td>5</td>
+      <td>4</td>
+      <td>2</td>
+      <td>8</td>
+      <td>7</td>
+      <td>3</td>
+      <td>8</td>
+      <td>11</td>
+      <td>5</td>
+      <td>7</td>
+      <td>1</td>
+      <td>9</td>
+      <td>5</td>
+      <td>8</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>18682</th>
+      <td>6</td>
+      <td>9</td>
+      <td>8</td>
+      <td>7</td>
+      <td>4</td>
+      <td>7</td>
+      <td>10</td>
+      <td>5</td>
+      <td>4</td>
+      <td>12</td>
+      <td>5</td>
+      <td>3</td>
+      <td>1</td>
+      <td>10</td>
+      <td>3</td>
+      <td>9</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>15432</th>
+      <td>4</td>
+      <td>11</td>
+      <td>5</td>
+      <td>8</td>
+      <td>3</td>
+      <td>8</td>
+      <td>8</td>
+      <td>9</td>
+      <td>8</td>
+      <td>6</td>
+      <td>8</td>
+      <td>8</td>
+      <td>3</td>
+      <td>8</td>
+      <td>4</td>
+      <td>8</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>9617</th>
+      <td>3</td>
+      <td>3</td>
+      <td>5</td>
+      <td>5</td>
+      <td>2</td>
+      <td>6</td>
+      <td>4</td>
+      <td>3</td>
+      <td>1</td>
+      <td>6</td>
+      <td>1</td>
+      <td>8</td>
+      <td>3</td>
+      <td>7</td>
+      <td>2</td>
+      <td>7</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6881</th>
+      <td>9</td>
+      <td>13</td>
+      <td>9</td>
+      <td>7</td>
+      <td>5</td>
+      <td>8</td>
+      <td>7</td>
+      <td>2</td>
+      <td>8</td>
+      <td>11</td>
+      <td>4</td>
+      <td>7</td>
+      <td>4</td>
+      <td>9</td>
+      <td>4</td>
+      <td>7</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>13646</th>
+      <td>10</td>
+      <td>9</td>
+      <td>8</td>
+      <td>13</td>
+      <td>5</td>
+      <td>8</td>
+      <td>9</td>
+      <td>3</td>
+      <td>3</td>
+      <td>6</td>
+      <td>11</td>
+      <td>5</td>
+      <td>4</td>
+      <td>10</td>
+      <td>7</td>
+      <td>7</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>18649</th>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>6</td>
+      <td>7</td>
+      <td>4</td>
+      <td>4</td>
+      <td>6</td>
+      <td>5</td>
+      <td>6</td>
+      <td>2</td>
+      <td>7</td>
+      <td>3</td>
+      <td>8</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>11312</th>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>8</td>
+      <td>6</td>
+      <td>7</td>
+      <td>4</td>
+      <td>6</td>
+      <td>6</td>
+      <td>8</td>
+      <td>3</td>
+      <td>8</td>
+      <td>3</td>
+      <td>8</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>14403</th>
+      <td>4</td>
+      <td>8</td>
+      <td>6</td>
+      <td>6</td>
+      <td>5</td>
+      <td>7</td>
+      <td>8</td>
+      <td>6</td>
+      <td>9</td>
+      <td>6</td>
+      <td>4</td>
+      <td>9</td>
+      <td>3</td>
+      <td>8</td>
+      <td>6</td>
+      <td>8</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>19316</th>
+      <td>3</td>
+      <td>4</td>
+      <td>4</td>
+      <td>6</td>
+      <td>3</td>
+      <td>5</td>
+      <td>11</td>
+      <td>8</td>
+      <td>4</td>
+      <td>7</td>
+      <td>2</td>
+      <td>9</td>
+      <td>3</td>
+      <td>7</td>
+      <td>6</td>
+      <td>11</td>
+      <td>18</td>
+    </tr>
+  </tbody>
+</table>
+<p>16000 rows × 17 columns</p>
+</div></div></div>
+</div>
+<p>Penjelasan code</p>
+<p>Code tersebut digunakan untuk menampilkan data train</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span> <span class="o">=</span> <span class="n">X_test</span>
+<span class="n">df4</span> <span class="o">=</span> <span class="n">Y_test</span>
+
+<span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df3</span><span class="p">,</span><span class="n">df4</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+<span class="n">df_test</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x-box</th>
+      <th>y-box</th>
+      <th>width</th>
+      <th>high</th>
+      <th>onpix</th>
+      <th>x-bar</th>
+      <th>y-bar</th>
+      <th>x2bar</th>
+      <th>y2bar</th>
+      <th>xybar</th>
+      <th>x2ybr</th>
+      <th>xy2br</th>
+      <th>x-ege</th>
+      <th>xegvy</th>
+      <th>y-ege</th>
+      <th>yegvx</th>
+      <th>lettr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>18085</th>
+      <td>6</td>
+      <td>13</td>
+      <td>5</td>
+      <td>7</td>
+      <td>3</td>
+      <td>8</td>
+      <td>7</td>
+      <td>3</td>
+      <td>7</td>
+      <td>11</td>
+      <td>5</td>
+      <td>7</td>
+      <td>2</td>
+      <td>9</td>
+      <td>5</td>
+      <td>6</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>6869</th>
+      <td>7</td>
+      <td>8</td>
+      <td>8</td>
+      <td>6</td>
+      <td>3</td>
+      <td>4</td>
+      <td>9</td>
+      <td>6</td>
+      <td>9</td>
+      <td>12</td>
+      <td>11</td>
+      <td>8</td>
+      <td>3</td>
+      <td>9</td>
+      <td>1</td>
+      <td>6</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>19266</th>
+      <td>5</td>
+      <td>10</td>
+      <td>7</td>
+      <td>7</td>
+      <td>8</td>
+      <td>6</td>
+      <td>7</td>
+      <td>3</td>
+      <td>6</td>
+      <td>7</td>
+      <td>7</td>
+      <td>10</td>
+      <td>5</td>
+      <td>8</td>
+      <td>5</td>
+      <td>6</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>1937</th>
+      <td>3</td>
+      <td>5</td>
+      <td>5</td>
+      <td>3</td>
+      <td>2</td>
+      <td>7</td>
+      <td>9</td>
+      <td>6</td>
+      <td>7</td>
+      <td>7</td>
+      <td>10</td>
+      <td>9</td>
+      <td>3</td>
+      <td>9</td>
+      <td>1</td>
+      <td>8</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>2076</th>
+      <td>3</td>
+      <td>8</td>
+      <td>4</td>
+      <td>6</td>
+      <td>3</td>
+      <td>5</td>
+      <td>8</td>
+      <td>6</td>
+      <td>6</td>
+      <td>9</td>
+      <td>8</td>
+      <td>14</td>
+      <td>1</td>
+      <td>9</td>
+      <td>3</td>
+      <td>10</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>15314</th>
+      <td>5</td>
+      <td>8</td>
+      <td>5</td>
+      <td>6</td>
+      <td>2</td>
+      <td>3</td>
+      <td>11</td>
+      <td>3</td>
+      <td>7</td>
+      <td>13</td>
+      <td>11</td>
+      <td>6</td>
+      <td>1</td>
+      <td>10</td>
+      <td>2</td>
+      <td>5</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>19987</th>
+      <td>3</td>
+      <td>7</td>
+      <td>3</td>
+      <td>5</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>6</td>
+      <td>6</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>8</td>
+      <td>0</td>
+      <td>8</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>8395</th>
+      <td>6</td>
+      <td>9</td>
+      <td>9</td>
+      <td>7</td>
+      <td>6</td>
+      <td>8</td>
+      <td>5</td>
+      <td>3</td>
+      <td>6</td>
+      <td>8</td>
+      <td>6</td>
+      <td>8</td>
+      <td>4</td>
+      <td>7</td>
+      <td>4</td>
+      <td>7</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>9140</th>
+      <td>6</td>
+      <td>10</td>
+      <td>9</td>
+      <td>8</td>
+      <td>9</td>
+      <td>8</td>
+      <td>7</td>
+      <td>7</td>
+      <td>4</td>
+      <td>7</td>
+      <td>6</td>
+      <td>9</td>
+      <td>6</td>
+      <td>8</td>
+      <td>7</td>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>15829</th>
+      <td>4</td>
+      <td>8</td>
+      <td>5</td>
+      <td>6</td>
+      <td>3</td>
+      <td>9</td>
+      <td>7</td>
+      <td>4</td>
+      <td>7</td>
+      <td>11</td>
+      <td>4</td>
+      <td>5</td>
+      <td>3</td>
+      <td>8</td>
+      <td>3</td>
+      <td>8</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+<p>4000 rows × 17 columns</p>
+</div></div></div>
+</div>
+<p>Code tersebut digunakan untuk menampilkan data testing</p>
+</section>
+</section>
+<section id="gaussian-naive-bayes-library">
+<h2>GAUSSIAN Naive Bayes Library<a class="headerlink" href="#gaussian-naive-bayes-library" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;letter-recognition.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Menghapus kolom yang tidak relevan</span>
+<span class="c1"># df.drop(&quot;Unnamed: 0&quot;, axis=1, inplace=True)</span>
+<span class="c1"># df.drop(&quot;Outlier&quot;, axis=1, inplace=True)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;x-box&#39;</span><span class="p">,</span><span class="s1">&#39;y-box&#39;</span><span class="p">,</span><span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;onpix&#39;</span><span class="p">,</span> <span class="s1">&#39;x-bar&#39;</span><span class="p">,</span> <span class="s1">&#39;y-bar&#39;</span><span class="p">,</span> <span class="s1">&#39;x2bar&#39;</span><span class="p">,</span> <span class="s1">&#39;y2bar&#39;</span><span class="p">,</span> <span class="s1">&#39;xybar&#39;</span><span class="p">,</span> <span class="s1">&#39;x2ybr&#39;</span><span class="p">,</span> <span class="s1">&#39;xy2br&#39;</span><span class="p">,</span> <span class="s1">&#39;x-ege&#39;</span><span class="p">,</span> <span class="s1">&#39;xegvy&#39;</span><span class="p">,</span> <span class="s1">&#39;y-ege&#39;</span><span class="p">,</span> <span class="s1">&#39;yegvx&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;lettr&#39;</span><span class="p">]</span>
+
+<span class="c1"># Bagi data menjadi data latih dan data uji</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">Y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span> 
+<span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">Y_train</span><span class="p">)</span>
+
+<span class="c1"># Data Baru yang Akan di Klasifikasikan</span>
+<span class="c1"># X = [df_test.values.tolist()[1][:-1]]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">]]</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Data X memiliki class: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Evaluasi Keakuratan</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nilai Keakuratan: </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">classifier</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data X memiliki class: [10]
+Nilai Keakuratan: 0.646250
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<p>Penjelasan code</p>
+<p>Code diatas digunakan untuk menentukan nilai keakuratan data testing berdasarkan metode Gaussian Naive Bayes. Pada metode ini sama seperti metode KNN, fitur harus dibagi menjadi dua yaitu fitur dan class setelah itu bagi data menjadi data training dan juga data testing dimana data training sebanyak 80% dan data testing sebanyak 20%. Setelah itu masukkan data testing sebagai data yang akan diuji nilai keakuratannya.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="stacking-classifier">
+<h1>Stacking Classifier<a class="headerlink" href="#stacking-classifier" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">model_selection</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span> 
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Stacking adalah metode pembelajaran ensemble yang menggabungkan beberapa algoritma pembelajaran mesin melalui meta-learning. Algoritma tingkat dasar dilatih menggunakan keseluruhan data pelatihan, sementara meta-model dilatih menggunakan hasil prediksi dari semua model dasar sebagai fitur. Dalam konteks ini, kita menggunakan metode KNN dan Naive Bayes untuk mengatasi bias dan varians. Dengan mempelajari teknik stacking, kita dapat meningkatkan akurasi prediksi model secara keseluruhan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       x-box  y-box  width  high  onpix  x-bar  y-bar  x2bar  y2bar  xybar  \
+16784      7     10      9     8      9      8      7      6      5      6   
+2957       3      7      5     5      4      7      8      7      6      7   
+18829      3      2      5     4      3      7     10      2      2      7   
+12230      4      9      6     7      4      6     11      1      9      8   
+7278       7     10      8     8      4      3      9      6      7     12   
+...      ...    ...    ...   ...    ...    ...    ...    ...    ...    ...   
+7324       1      8      0     6      0      7      7      4      4      7   
+1160       6      7      8     6      6      7      4      5      6      7   
+1175       4     10      5     8      3      3      7      6     11      7   
+2934       6     11      8     8      6      4      9      2      8     10   
+6618       4      8      6     7      6      9      9      2      6      7   
+
+       x2ybr  xy2br  x-ege  xegvy  y-ege  yegvx  
+16784      7      8      8      6      2      7  
+2957       5      6      2      8      7     10  
+18829      9      8      7     11      0      8  
+12230     11      8      0     10      1      7  
+7278      11      9      3      9      2      7  
+...      ...    ...    ...    ...    ...    ...  
+7324       6      8      0      8      0      8  
+1160       4      8      5      4      6      7  
+1175       6     15      0      8      7      6  
+2934       8      9      3      8      5      5  
+6618       5      6      2      5      7      7  
+
+[16000 rows x 16 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Penjelasan code</p>
+<p>Code diatas digunakan untuk menampilkan data pada bagian data train yang berisi fitur dari dataset yang akan digunakan dan sudah dibagi pada proses sebelumnya</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16784    13
+2957      2
+18829    23
+12230    20
+7278     21
+         ..
+7324      9
+1160     17
+1175      5
+2934      5
+6618     24
+Name: lettr, Length: 16000, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Penjelasan code</p>
+<p>Code diatas digunakan untuk menampilkan isi dari data training pada bagian Y_train yang berisi class dari dataset yang akan digunakan</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       x-box  y-box  width  high  onpix  x-bar  y-bar  x2bar  y2bar  xybar  \
+577        8     12      7     6      6      6      7      3      5      7   
+16746      3      7      3     4      1      1     11      5      6     11   
+9446       4      7      6     6      7      8      7      5      4      7   
+17161      3      8      4     6      4      6      7      6      8      7   
+8047       4      8      5     6      3      6     11      3      7      9   
+...      ...    ...    ...   ...    ...    ...    ...    ...    ...    ...   
+19693      3      4      4     6      2      8      8      8      7      6   
+4924       8     12      6     6      5      7      7      4      4      9   
+15568      4      8      5     6      5      6      9      6      5      9   
+5566       4     11      5     8      3      5     11      3      4      9   
+7928       2      7      3     5      3      4      4      4      6      3   
+
+       x2ybr  xy2br  x-ege  xegvy  y-ege  yegvx  
+577        5      9      6      9      6      6  
+16746     10      9      0      8      2      6  
+9446       7      7      5      9     10     12  
+17161      6     10      3      8      6      8  
+8047      11      7      5     12      1      7  
+...      ...    ...    ...    ...    ...    ...  
+19693      7      8      2      7      6     11  
+4924       8     10      4      9      8     10  
+15568      7      4      2     10      3      7  
+5566      12      9      2     10      1      8  
+7928       1      7      1      6      1      6  
+
+[4000 rows x 16 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<p>penjelasan code</p>
+<p>code diatas digunakan untuk menampilkan data test dari fitur dataset yang digunakan sebagai data testing ketika melakukan uji coba</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>577      18
+16746     6
+9446     19
+17161     5
+8047     20
+         ..
+19693     7
+4924      3
+15568    16
+5566     22
+7928     12
+Name: lettr, Length: 4000, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Penjelasan code</p>
+<p>Code diatas digunakan untuk menampilkan isi dari data testing pada bagian Y_test</p>
+<section id="model-k-nn-dengan-n-neighbours-3">
+<h2>Model K-NN dengan n-neighbours = 3<a class="headerlink" href="#model-k-nn-dengan-n-neighbours-3" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inisialisasi dan pelatihan model</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">c1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
+
+<span class="c1"># Prediksi pada data pelatihan</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">c1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+<span class="n">p1_test</span> <span class="o">=</span> <span class="n">c1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">p1_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[13  2 23 ...  5  5 24]
+[13  2 23 ...  5  5 24]
+[18  6 19 ... 16 22 12]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Setelah data dibagi menjadi dua yaitu data training dan juga data testing setelah itu data dilakukan uji coba dengan menggunakan metode KNN dengan menggunakan n-neighbout = 3. Uji coba ini dilakukan dengan menggunakan data training dan juga data testing</p>
+</section>
+<section id="model-k-nn-dengan-n-neighbours-5">
+<h2>Model K-NN dengan n-neighbours = 5<a class="headerlink" href="#model-k-nn-dengan-n-neighbours-5" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inisialisasi dan pelatihan model</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">c2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
+
+<span class="c1"># Prediksi pada data pelatihan</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">c2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">p2_test</span> <span class="o">=</span> <span class="n">c2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">p2_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[13  2 23 ...  5  5 24]
+[18  6 19 ... 16 22 12]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Code ini juga berfungsi seperti code diatas yaitu melatih data training dengan menggunakan metode KNN dengan n-neighbour = 5</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_meta</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;p1&#39;</span><span class="p">:</span> <span class="n">p1</span><span class="p">,</span> <span class="s1">&#39;p2&#39;</span><span class="p">:</span> <span class="n">p2</span><span class="p">,</span> <span class="s1">&#39;Y train&#39;</span> <span class="p">:</span> <span class="n">Y_train</span><span class="p">})</span>
+<span class="n">df_meta</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>p1</th>
+      <th>p2</th>
+      <th>Y train</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>16784</th>
+      <td>13</td>
+      <td>13</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>2957</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>18829</th>
+      <td>23</td>
+      <td>23</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>12230</th>
+      <td>20</td>
+      <td>20</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>7278</th>
+      <td>21</td>
+      <td>21</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>7324</th>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>1160</th>
+      <td>17</td>
+      <td>17</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>1175</th>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2934</th>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>6618</th>
+      <td>24</td>
+      <td>24</td>
+      <td>24</td>
+    </tr>
+  </tbody>
+</table>
+<p>16000 rows × 3 columns</p>
+</div></div></div>
+</div>
+<p>Penjelasan code</p>
+<p>Kode tersebut membuat DataFrame <code class="docutils literal notranslate"><span class="pre">df_meta</span></code> dengan tiga kolom (<code class="docutils literal notranslate"><span class="pre">p1</span></code>, <code class="docutils literal notranslate"><span class="pre">p2</span></code>, dan <code class="docutils literal notranslate"><span class="pre">Y</span> <span class="pre">train</span></code>) dari variabel <code class="docutils literal notranslate"><span class="pre">p1</span></code>, <code class="docutils literal notranslate"><span class="pre">p2</span></code>, dan <code class="docutils literal notranslate"><span class="pre">Y_train</span></code> menggunakan pustaka <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, kemudian menampilkannya.</p>
+</section>
+<section id="memprediksi-menggunakan-data-baru">
+<h2>Memprediksi menggunakan data baru<a class="headerlink" href="#memprediksi-menggunakan-data-baru" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Menggabungkan prediksi dari kedua model KNN sebagai fitur baru</span>
+<span class="n">f_meta_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">))</span>
+<span class="n">f_meta_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">p1_test</span><span class="p">,</span> <span class="n">p2_test</span><span class="p">))</span>
+
+<span class="c1"># Data baru untuk prediksi</span>
+<span class="n">X_new</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]</span>
+
+<span class="c1"># Inisialisasi dan pelatihan meta-classifier Naive Bayes</span>
+<span class="n">meta_classifier</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">meta_classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">f_meta_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
+
+<span class="c1"># Prediksi menggunakan meta-classifier</span>
+<span class="n">predict</span> <span class="o">=</span> <span class="n">meta_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">f_meta_test</span><span class="p">)</span>
+
+<span class="c1"># Menghitung akurasi prediksi</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">Y_test</span><span class="p">,</span> <span class="n">predict</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Akurasi : </span><span class="si">{</span><span class="n">accuracy</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+
+<span class="c1"># Prediksi data baru menggunakan model KNN</span>
+<span class="n">p1_new</span> <span class="o">=</span> <span class="n">c1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+<span class="n">p2_new</span> <span class="o">=</span> <span class="n">c2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+
+<span class="c1"># Menggabungkan prediksi KNN sebagai fitur baru untuk data baru</span>
+<span class="n">f_meta_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">p1_new</span><span class="p">,</span> <span class="n">p2_new</span><span class="p">))</span>
+
+<span class="c1"># Prediksi data baru menggunakan meta-classifier Naive Bayes</span>
+<span class="n">predict_new</span> <span class="o">=</span> <span class="n">meta_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">f_meta_new</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Prediksi untuk data baru : </span><span class="si">{</span><span class="n">predict_new</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi : 76.28%
+Prediksi untuk data baru : [10]
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
+  warnings.warn(
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<p>Penjelasan code</p>
+<p>Code diatas berfungsi untuk memprediksi data baru berdasarkan nilai dari metode meta classifier menggunakan KNN dan menentukan nilai akurasi dari perhitungan tersebut.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;letter-recognition.csv&#39;</span><span class="p">)</span>
+<span class="c1"># df.drop(&quot;Unnamed: 0&quot;, axis=1, inplace=True)</span>
+<span class="c1"># df.drop(&quot;Outlier&quot;, axis=1, inplace=True)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x-box</th>
+      <th>y-box</th>
+      <th>width</th>
+      <th>high</th>
+      <th>onpix</th>
+      <th>x-bar</th>
+      <th>y-bar</th>
+      <th>x2bar</th>
+      <th>y2bar</th>
+      <th>xybar</th>
+      <th>x2ybr</th>
+      <th>xy2br</th>
+      <th>x-ege</th>
+      <th>xegvy</th>
+      <th>y-ege</th>
+      <th>yegvx</th>
+      <th>Outlier</th>
+      <th>lettr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>8</td>
+      <td>3</td>
+      <td>5</td>
+      <td>1</td>
+      <td>8</td>
+      <td>13</td>
+      <td>0</td>
+      <td>6</td>
+      <td>6</td>
+      <td>10</td>
+      <td>8</td>
+      <td>0</td>
+      <td>8</td>
+      <td>0</td>
+      <td>8</td>
+      <td>1</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5</td>
+      <td>12</td>
+      <td>3</td>
+      <td>7</td>
+      <td>2</td>
+      <td>10</td>
+      <td>5</td>
+      <td>5</td>
+      <td>4</td>
+      <td>13</td>
+      <td>3</td>
+      <td>9</td>
+      <td>2</td>
+      <td>8</td>
+      <td>4</td>
+      <td>10</td>
+      <td>1</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>11</td>
+      <td>6</td>
+      <td>8</td>
+      <td>6</td>
+      <td>10</td>
+      <td>6</td>
+      <td>2</td>
+      <td>6</td>
+      <td>10</td>
+      <td>3</td>
+      <td>7</td>
+      <td>3</td>
+      <td>7</td>
+      <td>3</td>
+      <td>9</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7</td>
+      <td>11</td>
+      <td>6</td>
+      <td>6</td>
+      <td>3</td>
+      <td>5</td>
+      <td>9</td>
+      <td>4</td>
+      <td>6</td>
+      <td>4</td>
+      <td>4</td>
+      <td>10</td>
+      <td>6</td>
+      <td>10</td>
+      <td>2</td>
+      <td>8</td>
+      <td>1</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>8</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>5</td>
+      <td>9</td>
+      <td>1</td>
+      <td>7</td>
+      <td>5</td>
+      <td>10</td>
+      <td>-1</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>19995</th>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>4</td>
+      <td>2</td>
+      <td>8</td>
+      <td>3</td>
+      <td>7</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>19996</th>
+      <td>7</td>
+      <td>10</td>
+      <td>8</td>
+      <td>8</td>
+      <td>4</td>
+      <td>4</td>
+      <td>8</td>
+      <td>6</td>
+      <td>9</td>
+      <td>12</td>
+      <td>9</td>
+      <td>13</td>
+      <td>2</td>
+      <td>9</td>
+      <td>3</td>
+      <td>7</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>19997</th>
+      <td>6</td>
+      <td>9</td>
+      <td>6</td>
+      <td>7</td>
+      <td>5</td>
+      <td>6</td>
+      <td>11</td>
+      <td>3</td>
+      <td>7</td>
+      <td>11</td>
+      <td>9</td>
+      <td>5</td>
+      <td>2</td>
+      <td>12</td>
+      <td>2</td>
+      <td>4</td>
+      <td>1</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>19998</th>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>2</td>
+      <td>1</td>
+      <td>8</td>
+      <td>7</td>
+      <td>2</td>
+      <td>6</td>
+      <td>10</td>
+      <td>6</td>
+      <td>8</td>
+      <td>1</td>
+      <td>9</td>
+      <td>5</td>
+      <td>8</td>
+      <td>1</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>19999</th>
+      <td>4</td>
+      <td>9</td>
+      <td>6</td>
+      <td>6</td>
+      <td>2</td>
+      <td>9</td>
+      <td>5</td>
+      <td>3</td>
+      <td>1</td>
+      <td>8</td>
+      <td>1</td>
+      <td>8</td>
+      <td>2</td>
+      <td>7</td>
+      <td>2</td>
+      <td>8</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>20000 rows × 18 columns</p>
+</div></div></div>
+</div>
+<p>Penjelasan code</p>
+<p>Kode tersebut membaca file CSV <code class="docutils literal notranslate"><span class="pre">letter-recognition.csv</span></code> ke dalam DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code> menggunakan pustaka <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. Baris-baris yang dikomentari (<code class="docutils literal notranslate"><span class="pre">df.drop(&quot;Unnamed:</span> <span class="pre">0&quot;,</span> <span class="pre">axis=1,</span> <span class="pre">inplace=True)</span></code> dan <code class="docutils literal notranslate"><span class="pre">df.drop(&quot;Outlier&quot;,</span> <span class="pre">axis=1,</span> <span class="pre">inplace=True)</span></code>) berfungsi untuk menghapus kolom <code class="docutils literal notranslate"><span class="pre">Unnamed:</span> <span class="pre">0</span></code> dan <code class="docutils literal notranslate"><span class="pre">Outlier</span></code> jika tidak dikomentari. Setelah itu, DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code> ditampilkan.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bagging-classifier">
+<h1>Bagging Classifier<a class="headerlink" href="#bagging-classifier" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="c1"># Memuat dataset</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;letter-recognition.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Periksa nilai unik dalam kolom &#39;class&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nilai unik dalam kolom &#39;class&#39;:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;lettr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+<span class="c1"># Memisahkan fitur dan target</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;x-box&#39;</span><span class="p">,</span> <span class="s1">&#39;y-box&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;onpix&#39;</span><span class="p">,</span> <span class="s1">&#39;x-bar&#39;</span><span class="p">,</span> <span class="s1">&#39;y-bar&#39;</span><span class="p">,</span> <span class="s1">&#39;x2bar&#39;</span><span class="p">,</span> <span class="s1">&#39;y2bar&#39;</span><span class="p">,</span> <span class="s1">&#39;xybar&#39;</span><span class="p">,</span> <span class="s1">&#39;x2ybr&#39;</span><span class="p">,</span> <span class="s1">&#39;xy2br&#39;</span><span class="p">,</span> <span class="s1">&#39;x-ege&#39;</span><span class="p">,</span> <span class="s1">&#39;xegvy&#39;</span><span class="p">,</span> <span class="s1">&#39;y-ege&#39;</span><span class="p">,</span> <span class="s1">&#39;yegvx&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;lettr&#39;</span><span class="p">]</span>
+
+<span class="c1"># Membagi dataset menjadi data pelatihan dan pengujian</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+
+<span class="c1"># Parameter bagging</span>
+<span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_estimators</span><span class="p">)</span>
+
+<span class="c1"># Inisialisasi list untuk menyimpan model dan akurasi</span>
+<span class="n">estimators</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">accuracies</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">X_new</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">]]</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Membuat model Gaussian Naive Bayes untuk setiap subset</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_estimators</span><span class="p">):</span>
+    <span class="c1"># Membuat bootstrap sample</span>
+    <span class="n">bootstrap_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">),</span> <span class="n">n_samples</span><span class="p">)</span>
+    <span class="n">X_train_bootstrap</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">bootstrap_indices</span><span class="p">]</span>
+    <span class="n">y_train_bootstrap</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">bootstrap_indices</span><span class="p">]</span>
+    
+    <span class="c1"># Melatih model</span>
+    <span class="n">gnb_model</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+    <span class="n">gnb_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_bootstrap</span><span class="p">,</span> <span class="n">y_train_bootstrap</span><span class="p">)</span>
+    <span class="n">estimators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gnb_model</span><span class="p">)</span>
+
+    <span class="c1"># Evaluasi model    </span>
+    <span class="n">bebas</span> <span class="o">=</span> <span class="n">gnb_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+    <span class="n">pred</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bebas</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Mengambil nilai prediksi dan menyimpannya di list pred</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prediction for estimator </span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">bebas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">gnb_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">accuracies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimator </span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Majority vote untuk prediksi data baru</span>
+<span class="n">pred_majority_vote</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Majority vote prediction for new data: </span><span class="si">{</span><span class="n">pred_majority_vote</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Menghitung jumlah dari masing-masing kelas dalam pred</span>
+<span class="n">class_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">class_label</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">class_counts</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah prediksi kelas </span><span class="si">{</span><span class="n">class_label</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">class_counts</span><span class="p">[</span><span class="n">class_label</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Menghitung rata-rata akurasi dari semua estimators</span>
+<span class="n">average_accuracy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">accuracies</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average accuracy of all estimators: </span><span class="si">{</span><span class="n">average_accuracy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Nilai unik dalam kolom &#39;class&#39;: [20  9  4 14  7 19  2  1 10 13 24 15 18  6  3  8 23 12 16  5 22 25 17 21
+ 11 26]
+Prediction for estimator 1: 24
+Estimator 1 accuracy: 0.5880
+Prediction for estimator 2: 24
+Estimator 2 accuracy: 0.6072
+Prediction for estimator 3: 24
+Estimator 3 accuracy: 0.5962
+Prediction for estimator 4: 24
+Estimator 4 accuracy: 0.5860
+Prediction for estimator 5: 4
+Estimator 5 accuracy: 0.5825
+Prediction for estimator 6: 24
+Estimator 6 accuracy: 0.5840
+Prediction for estimator 7: 24
+Estimator 7 accuracy: 0.5847
+Prediction for estimator 8: 24
+Estimator 8 accuracy: 0.5567
+Prediction for estimator 9: 24
+Estimator 9 accuracy: 0.5750
+Prediction for estimator 10: 24
+Estimator 10 accuracy: 0.5857
+Prediction for estimator 11: 24
+Estimator 11 accuracy: 0.5835
+Prediction for estimator 12: 24
+Estimator 12 accuracy: 0.5705
+Prediction for estimator 13: 24
+Estimator 13 accuracy: 0.5797
+Prediction for estimator 14: 24
+Estimator 14 accuracy: 0.6002
+Prediction for estimator 15: 24
+Estimator 15 accuracy: 0.5800
+Prediction for estimator 16: 24
+Estimator 16 accuracy: 0.6010
+Prediction for estimator 17: 24
+Estimator 17 accuracy: 0.5823
+Prediction for estimator 18: 24
+Estimator 18 accuracy: 0.5895
+Prediction for estimator 19: 24
+Estimator 19 accuracy: 0.5777
+Prediction for estimator 20: 24
+Estimator 20 accuracy: 0.5645
+Majority vote prediction for new data: 24
+Jumlah prediksi kelas 0: 0
+Jumlah prediksi kelas 1: 0
+Jumlah prediksi kelas 2: 0
+Jumlah prediksi kelas 3: 0
+Jumlah prediksi kelas 4: 1
+Jumlah prediksi kelas 5: 0
+Jumlah prediksi kelas 6: 0
+Jumlah prediksi kelas 7: 0
+Jumlah prediksi kelas 8: 0
+Jumlah prediksi kelas 9: 0
+Jumlah prediksi kelas 10: 0
+Jumlah prediksi kelas 11: 0
+Jumlah prediksi kelas 12: 0
+Jumlah prediksi kelas 13: 0
+Jumlah prediksi kelas 14: 0
+Jumlah prediksi kelas 15: 0
+Jumlah prediksi kelas 16: 0
+Jumlah prediksi kelas 17: 0
+Jumlah prediksi kelas 18: 0
+Jumlah prediksi kelas 19: 0
+Jumlah prediksi kelas 20: 0
+Jumlah prediksi kelas 21: 0
+Jumlah prediksi kelas 22: 0
+Jumlah prediksi kelas 23: 0
+Jumlah prediksi kelas 24: 19
+Average accuracy of all estimators: 0.5838
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<p>Penjelasan code</p>
+<p>Bagging (Bootstrap Aggregating) adalah teknik ensemble yang bertujuan untuk meningkatkan akurasi prediksi dengan mengkombinasikan hasil dari beberapa model yang dilatih pada subset acak dari dataset asli. Teknik ini membantu mengurangi overfitting dan membuat model lebih stabil. Pada studi kasus ini, data yang telah dilatih menggunakan metode KNN dipakai sebagai fitur baru dalam perhitungan dengan menggunakan bagging classifier.</p>
+<a style='text-decoration:none;line-height:16px;display:flex;color:#5B5B62;padding:10px;justify-content:end;' href='https://deepnote.com?utm_source=created-in-deepnote-cell&projectId=0ebf5bcc-908a-44a3-a323-23010d32709e' target="_blank">
+<img alt='Created in deepnote.com' style='display:inline;max-height:16px;margin:0px;margin-right:7.5px;' src='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iODBweCIgaGVpZ2h0PSI4MHB4IiB2aWV3Qm94PSIwIDAgODAgODAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDU0LjEgKDc2NDkwKSAtIGh0dHBzOi8vc2tldGNoYXBwLmNvbSAtLT4KICAgIDx0aXRsZT5Hcm91cCAzPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IkxhbmRpbmciIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJBcnRib2FyZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEyMzUuMDAwMDAwLCAtNzkuMDAwMDAwKSI+CiAgICAgICAgICAgIDxnIGlkPSJHcm91cC0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMjM1LjAwMDAwMCwgNzkuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aC0yMCIgZmlsbD0iIzAyNjVCNCIgcG9pbnRzPSIyLjM3NjIzNzYyIDgwIDM4LjA0NzY2NjcgODAgNTcuODIxNzgyMiA3My44MDU3NTkyIDU3LjgyMTc4MjIgMzIuNzU5MjczOSAzOS4xNDAyMjc4IDMxLjY4MzE2ODMiPjwvcG9seWdvbj4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0zNS4wMDc3MTgsODAgQzQyLjkwNjIwMDcsNzYuNDU0OTM1OCA0Ny41NjQ5MTY3LDcxLjU0MjI2NzEgNDguOTgzODY2LDY1LjI2MTk5MzkgQzUxLjExMjI4OTksNTUuODQxNTg0MiA0MS42NzcxNzk1LDQ5LjIxMjIyODQgMjUuNjIzOTg0Niw0OS4yMTIyMjg0IEMyNS40ODQ5Mjg5LDQ5LjEyNjg0NDggMjkuODI2MTI5Niw0My4yODM4MjQ4IDM4LjY0NzU4NjksMzEuNjgzMTY4MyBMNzIuODcxMjg3MSwzMi41NTQ0MjUgTDY1LjI4MDk3Myw2Ny42NzYzNDIxIEw1MS4xMTIyODk5LDc3LjM3NjE0NCBMMzUuMDA3NzE4LDgwIFoiIGlkPSJQYXRoLTIyIiBmaWxsPSIjMDAyODY4Ij48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMCwzNy43MzA0NDA1IEwyNy4xMTQ1MzcsMC4yNTcxMTE0MzYgQzYyLjM3MTUxMjMsLTEuOTkwNzE3MDEgODAsMTAuNTAwMzkyNyA4MCwzNy43MzA0NDA1IEM4MCw2NC45NjA0ODgyIDY0Ljc3NjUwMzgsNzkuMDUwMzQxNCAzNC4zMjk1MTEzLDgwIEM0Ny4wNTUzNDg5LDc3LjU2NzA4MDggNTMuNDE4MjY3Nyw3MC4zMTM2MTAzIDUzLjQxODI2NzcsNTguMjM5NTg4NSBDNTMuNDE4MjY3Nyw0MC4xMjg1NTU3IDM2LjMwMzk1NDQsMzcuNzMwNDQwNSAyNS4yMjc0MTcsMzcuNzMwNDQwNSBDMTcuODQzMDU4NiwzNy43MzA0NDA1IDkuNDMzOTE5NjYsMzcuNzMwNDQwNSAwLDM3LjczMDQ0MDUgWiIgaWQ9IlBhdGgtMTkiIGZpbGw9IiMzNzkzRUYiPjwvcGF0aD4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+' > </img>
+Created in <span style='font-weight:600;margin-left:4px;'>Deepnote</span></a></section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="notebooks.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Content with notebooks</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="markdown-notebooks.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Notebooks with MyST Markdown</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Studi Kasus Klasifikasi Huruf Alfabet A-Z Berdasarkan Fitur Geometris yang Diekstrak dari Citra Huruf Menggunakan Dataset Letter Recognition</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-analisis">Tujuan Analisis</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">Data Understanding</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-data">Deskripsi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-data">Menampilkan data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitur">Fitur</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-class">Penjelasan Class</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-kualitas-data">Identifikasi kualitas data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-outlier">Identifikasi Outlier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cek-missing-values">Cek Missing Values</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-processing-data">PRE PROCESSING DATA</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-outlier-dengan-menghapus-outlier">Penanganan Outlier Dengan Menghapus Outlier</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling">MODELLING</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbour">K-Nearest Neighbour</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes-classification">GAUSSIAN NAIVE BAYES CLASSIFICATION</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-data-dari-file-csv">Membaca data dari file csv</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membagi-data">Membagi Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes-library">GAUSSIAN Naive Bayes Library</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stacking-classifier">Stacking Classifier</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-k-nn-dengan-n-neighbours-3">Model K-NN dengan n-neighbours = 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-k-nn-dengan-n-neighbours-5">Model K-NN dengan n-neighbours = 5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memprediksi-menggunakan-data-baru">Memprediksi menggunakan data baru</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier">Bagging Classifier</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
